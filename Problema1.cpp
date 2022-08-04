@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <time.h>
-int aaa(int n);
+int funcaoDemorada(int n);
 
 int main(){
     clock_t t1;
     int n;
     t1 = clock();
-    printf("Defina o número:");
+    printf("Defina o numero:");
     scanf("%i", &n);
     printf("%i\n", funcaoDemorada(n));
     t1 = clock()-t1;
