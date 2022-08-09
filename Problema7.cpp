@@ -29,3 +29,4 @@ int main() {
       else if ((x0 * x0) - x > e) {
         raiz(float(x), float(x0), float(e));
   }
+}
