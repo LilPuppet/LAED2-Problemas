@@ -19,7 +19,7 @@ int main () {
     t1 = clock();
     int n = 100, i;
 	float*res = sequencias_geradas (n);
-    int media = 0;
+    int m = 0;
     	for (i = 0; i < n ; i ++) {
     	printf ("res [%i] %.2f\n", i, res[i]);
     	m = m + res[i];
