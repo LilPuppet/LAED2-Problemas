@@ -12,8 +12,6 @@
     }
     return res ;
 }
-
-
 int main () {
     setlocale(LC_ALL,"");   
     printf (" Gerador de sequencias aleatorias: \n");
@@ -22,9 +20,9 @@ int main () {
     int n = 100, i;
 	float*res = sequencias_geradas (n);
     int media = 0;
-    for (i = 0; i < n ; i ++) {
-    printf ("res [%i] %.2f\n", i, res[i]);
-    media = media + res[i];
+    	for (i = 0; i < n ; i ++) {
+    	printf ("res [%i] %.2f\n", i, res[i]);
+    	m = m + res[i];
     }
     t1 = clock () - t1;
 	printf("\n tempo final %f 's\n", (((float)t1)/CLOCKS_PER_SEC));
