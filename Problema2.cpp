@@ -14,7 +14,7 @@
 }
 int main () {
     setlocale(LC_ALL,"");   
-    printf (" Gerador de sequencias aleatorias: \n");
+    printf (" Gerar de numeros aleatorios: \n");
     clock_t t1;
     t1 = clock();
     int n = 100, i;
