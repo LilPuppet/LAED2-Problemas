@@ -26,7 +26,7 @@ int main () {
     }
     t1 = clock () - t1;
 	printf("\n tempo final %f 's\n", (((float)t1)/CLOCKS_PER_SEC));
-    printf("\n media resultante: %i\n", media/n);
+    printf("\n media resultante: %i\n", m/n);
 
     return 0;
  }
