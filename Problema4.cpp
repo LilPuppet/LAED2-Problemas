@@ -1,22 +1,19 @@
 #include <stdio.h>
-
-float binomial(float n, float k) {
-  float x;
-  if (n == k && k == 0){
+#include <stdlib.h>
+#include <iostream>
+int binomial(int n, int k) {
+  if (n == k || k == 0){
     return(1);
   }
-  else{
-    x = ((n-1)/(k-1))+((n-1)/k);
-  }
-  return(x);
+  return (binomial(n-1, k-1) + binomial(n-1, k));
 }
 
 int main(){
-    float n,k;
+    int n,k;
     printf("Insira n:");
-    scanf("%f", &n);
+    scanf("%d", &n);
     printf("Insira k:");
-    scanf("%f", &k);
-    printf("%.1f ", binomial(n,k));
+    scanf("%d", &k);
+    //printf("%d\n", binomial(n,k));
+    printf("%d\n", binomial(n,k));
 }
-
