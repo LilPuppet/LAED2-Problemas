@@ -1,0 +1,155 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX 5570
+#define SIZE 1024
+
+typedef float Latitude;
+typedef float Longitude;
+
+typedef struct{
+    unsigned int idcidade;
+    char *estado;
+    char *cidade;
+} cidade;
+
+typedef struct{
+    unsigned int id;
+    Latitude la;
+    Longitude lo;
+} gps;
+
+typedef struct{
+    int key;
+    cidade cid;
+    gps GPS;
+    struct No* prox;
+} Satelite;
+
+struct No{
+    Satelite Dados;
+    struct No *prox;
+};
+
+typedef struct{
+    struct No prox;
+    struct No *inicio;
+}Lista;
+
+typedef No* hash[SIZE];
+
+void InitHash(hash &H){
+    for (int i = 0; i < SIZE; i++){
+        H[i] = 0;
+    }  
+}
+
+void InitLista(Lista *PL){
+    PL->inicio = NULL;
+    PL->prox.Dados.key = 0;
+}
+
+cidade *getCidades(char *arquivo) {
+    FILE *f = fopen(arquivo, "r");
+    cidade *cidades = (cidade *)malloc(MAX * sizeof(cidade));
+        if (!f) {
+            perror("Arquivo não existe");
+            return NULL;
+        }
+    fscanf(f, "CODIGO MUNICIPIO;UF;NOME MUNICIPIO");
+        unsigned int cod;
+        char *uf;
+        char *cid;
+        int i = 0;
+            while (!feof(f)) {
+                uf = (char *)malloc(2 * sizeof(char));
+                cid = (char *)malloc(40 * sizeof(char));
+                fscanf(f, "%d %s ", &cod, uf);
+                fgets(cid, 40 * sizeof(char), f);
+                cidades[i].idcidade = cod;
+                cidades[i].estado = uf;
+                cidades[i].cidade = cid;
+                i = i + 1;
+            }
+    return cidades;
+}
+
+gps *getGps(char *localizacoes) {
+    FILE *f = fopen(localizacoes, "r");
+        gps *local = (gps *)malloc(MAX * sizeof(gps));
+        if (!f) {
+            perror("Arquivo não existe");
+            return NULL;
+        }
+        fscanf(f, "CODIGO MUNICIPIO;LATITUDE;LONGITUDE");
+            unsigned int cod;
+            Latitude la;
+            Longitude lo;
+            int i = 0;
+        while (!feof(f)) {
+            fscanf(f, "%u;%f;%f", &cod, &la, &lo);
+                local[i].id = cod;
+                local[i].la = la;
+                local[i].lo = lo;
+                i = i + 1;
+        }
+    return local;
+}
+
+void insertWR(hash H, Lista *PL, int (*FunH)(Lista *)){
+    int Chaveamento = FunH(PL);
+    
+}
+
+void LerDados(Satelite *Data){
+    scanf("");
+}
+
+void RemoveWR(No *NODE, int Busca){
+    No *aux = NODE;
+        if (NODE->Dados.cid.idcidade == Busca){
+            NODE->prox;
+            free(aux);
+            return;
+        }
+    while (aux->prox != 0 ){
+        No* remover = aux->prox;
+        aux->prox = aux->prox->prox;
+        free(remover);
+    }
+    
+}
+
+struct No* BuscarWR(Lista L, int busca){
+    struct No* Pin;
+    for (Pin = L.inicio; Pin != NULL && Pin->Dados.cid.idcidade == busca; Pin = Pin->prox){
+     return Pin;   
+    }
+           
+}
+
+void IniciarTabela(Lista PL[]){
+    int i;
+        for (i = 0; i < MAX; i++){
+            InitLista(&PL[i]);
+        }
+        
+}
+
+int div(Satelite *Sat){
+    return Sat->key * SIZE;
+}
+
+void menu(){
+    printf("\n|---------- MENU ----------|\n");
+    printf("#1 - Escanear Dados;\n");
+    printf("#2 - Inserir;\n");
+    printf("#3 - Buscar;\n");
+    printf("#4 - Remover;\n");
+    printf("#5 - SAIR!\n");
+    printf("Sua Escolha: \t");
+}
+
+int main(){
+    printf("Teste");
+}
